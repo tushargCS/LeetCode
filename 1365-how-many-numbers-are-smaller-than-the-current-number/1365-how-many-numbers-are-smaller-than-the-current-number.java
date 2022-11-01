@@ -5,12 +5,15 @@ class Solution {
             arr[i]=nums[i];
         }
         Arrays.sort(arr);
-        int n[]= new int[nums.length];
+        HashMap<Integer,Integer>Map = new HashMap<>();
         for(int i=0;i<arr.length;i++){
-            int j=0;
-            while(arr[j]!=nums[i]){j++;}
-            n[i]=j;
+            if(Map.containsKey(arr[i])){}
+            else{Map.put(arr[i],i);}
         }
-        return n;
+        for(int i=0;i<nums.length;i++){
+            arr[i]=Map.get(nums[i]);
+        }
+        
+        return arr;
     }
 }
