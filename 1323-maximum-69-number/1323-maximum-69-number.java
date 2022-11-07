@@ -8,9 +8,8 @@ class Solution {
             else{n+='9';break;}
         }
         i++;
-        while(i<s.length()){
-            n+=s.charAt(i);
-            i++;
+        if(i<s.length()){
+            n+=s.substring(i,s.length());
         }
         
        num = Integer.parseInt(n);
