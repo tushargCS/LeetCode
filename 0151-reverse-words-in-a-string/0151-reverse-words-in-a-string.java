@@ -1,22 +1,19 @@
 class Solution {
     public String reverseWords(String s) {
         String r="";
-        String arr[] = new String[s.length()];
-        int j=0;
+      ArrayList<String>obj =new ArrayList<>();
         int temp=0;
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)!=' '){
                 temp = find(i,s);
-                arr[j]=s.substring(i,temp);
-                    j++;
-               i=temp;
+                obj.add(s.substring(i,temp));
+                i=temp;
             }
-             
         }
         
         
-        for(int i=j-1;i>=0;i--){
-            r+=arr[i];
+        for(int i=obj.size()-1;i>=0;i--){
+            r+=obj.get(i);
             if(i!=0){r+=" ";}
         }
             
@@ -24,9 +21,9 @@ class Solution {
     }
     
     public int find(int i,String s){
+         i++;
          if((i)==s.length()){return i;}
-        i++;
-         if((i)==s.length()){return i;}
+       
         while(s.charAt(i)!=' ' && i<s.length()){
             i++;
             if((i)==s.length()){return i;}
