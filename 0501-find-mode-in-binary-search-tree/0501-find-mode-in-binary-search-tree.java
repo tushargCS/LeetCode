@@ -14,40 +14,48 @@
  * }
  */
 class Solution {
-    HashMap<Integer,Integer>map= new HashMap<>();
-    public int[] findMode(TreeNode root) {
-        fun(root);
+       int count=1;
         int max=0;
-        int r = 0;
-        Iterator<Integer> I =map.keySet().iterator();
-        Iterator<Integer> I1 =map.keySet().iterator();
-        ArrayList<Integer>obj1 = new ArrayList<>();
-       
-        while(I.hasNext()){
-           Integer key =I.next();
-            if(map.get(key)>max){max = map.get(key); r =key;}
-        }
+    Integer prev = null;
+    public int[] findMode(TreeNode root) {
         
+        List<Integer>modes =  new ArrayList<>();
         
-        while(I1.hasNext()){
-           Integer key =I1.next();
-            if(map.get(key)==max){obj1.add(key);}
-        }
-        int arr[]= new int[obj1.size()];
-        for(int i=0;i<obj1.size();i++){
-            arr[i]=obj1.get(i);
-        }
+        fun(root,modes);
         
+        int arr[]= new int[modes.size()];
+        for(int i=0;i<modes.size();i++){
+            arr[i]=modes.get(i);
+        }
         return arr;
     }
-    public void fun(TreeNode root){
+    
+    public void fun(TreeNode root,List<Integer>modes){
         if(root==null){return;}
-        if(map.containsKey(root.val)){
-            int t  = map.get(root.val);t++;map.put(root.val,t);
+        
+        fun(root.left,modes);
+        
+        if(prev!=null){
+            if(prev==root.val){
+                count++;
+                
+            }
+            else{
+                count=1;
+            }
         }
-        else{map.put(root.val,1);}
-        fun(root.left);
-        fun(root.right);
-        return;
+        if(count>max){
+            max=count;
+            modes.clear();
+            modes.add(root.val);
+        }else if(count==max){
+            modes.add(root.val);
+        }
+        
+        prev = root.val;
+        
+        
+        fun(root.right,modes);
     }
+    
 }
