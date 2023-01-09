@@ -3,32 +3,26 @@ class Solution {
      
         if(num==0){return "0";}
         
-       int d=7;
 	   int n=num;
 	   String s="";
       
-        int i=10;
+        int i=8;
         int t=0;
         
         int pos=1;
         if(n<0){pos=0;}
-         n=Math.abs(n);
+        n=Math.abs(n);
         
        
 	  
-        
-	  
-	  
-	  
-	  while(i>=0){
+     while(i>=0){
 	  
 	   int j=1;
-	  
-	    t=0;
+	   t=0;
 	 
 	 
-	   if(n%(int)Math.pow(d,i)<n){
-	      t = n%(int)Math.pow(d,i);
+	   if(n%(int)Math.pow(7,i)<n){
+	      t = n%(int)Math.pow(7,i);
 	 
 	    while((j*Math.pow(7,i))<=n){
 	      j++;
