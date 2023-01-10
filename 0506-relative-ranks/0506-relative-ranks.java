@@ -1,4 +1,6 @@
 class Solution {
+    
+    
     public String[] findRelativeRanks(int[] score) {
         
         HashMap<Integer,String>Map = new HashMap<>();
@@ -18,24 +20,32 @@ class Solution {
              arr[arr.length - i - 1] = temp;
         }
         
+         String s[] = new String[arr.length];
         
         for(int i=0;i<arr.length;i++){
-             if(i==0){Map.put(arr[i],"Gold Medal");}
-             else if(i==1){Map.put(arr[i],"Silver Medal");}
-             else if(i==2){Map.put(arr[i],"Bronze Medal");}
+             if(i==0){put(score,arr[i],"Gold Medal",s);}
+             else if(i==1){put(score,arr[i],"Silver Medal",s);}
+             else if(i==2){put(score,arr[i],"Bronze Medal",s);}
              else{
                  String t = String.valueOf(i+1);
-                 Map.put(arr[i],t);   
+                 put(score,arr[i],t,s);   
             }
         }
         
-        String s[] = new String[arr.length];
+       
         
-         for(int i=0;i<arr.length;i++){
-            s[i]=Map.get(score[i]);
-        }
+       
         
         return s;
         
+    }
+    
+    public void put(int score[],int target,String push,String s[] ){
+       
+        int i=0;
+        while(score[i]!=target){
+            i++;
+        }
+        s[i]=push;
     }
 }
