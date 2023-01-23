@@ -5,11 +5,9 @@ class Solution {
         if(trust.length==0){return 1;}
         
         HashSet<Integer>has = new HashSet<>();
-        HashMap<Integer,Integer>Map = new HashMap<>();
         
         for(int i=0;i<trust.length;i++){
             has.add(trust[i][0]);
-            Map.put(trust[i][0],trust[i][1]);
         }
         
         if(has.size()<n-1){return -1;}
@@ -20,6 +18,7 @@ class Solution {
         }
         
         has.clear();
+       
         for(int i=0;i<trust.length;i++){
             if(trust[i][1]==judge){has.add(trust[i][0]);}
         }
