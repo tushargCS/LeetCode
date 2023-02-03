@@ -11,16 +11,15 @@ class Solution {
             if(strs[i].equals("")){continue;}
             List<String> temp = new ArrayList<>();
             temp.add(strs[i]);
-            StringBuilder s1 = new StringBuilder(strs[i]);
             for(int j=i+1;j<n;j++){
-                StringBuilder s2 = new StringBuilder(strs[j]);
-                boolean b = check(s1,s2); 
+                boolean b = check(strs[i],strs[j]); 
                 if(b==true){temp.add(strs[j]);strs[j]="";}
                                   
             }
             obj.add(temp);
         }
-         List<String> temp1 = new ArrayList<>();
+        
+        List<String> temp1 = new ArrayList<>();
         int f=0;
         while(flag>0){
             f=1;
@@ -31,7 +30,7 @@ class Solution {
         return obj;
     }
     
-    public boolean check(StringBuilder s1,StringBuilder s2){
+    public boolean check(String s1,String s2){
         if(s1.length()!=s2.length()){return false;}
         int n = s1.length();
         int arr1[] = new int[26];
