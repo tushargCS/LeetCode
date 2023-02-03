@@ -3,8 +3,7 @@ class Solution {
         
         if(s.length()<=numRows){return s;}
         if(numRows==1){return s;}
-        
-        String rs = "";
+        StringBuilder sb = new StringBuilder();
         char ch[] = s.toCharArray();
         int p1 = numRows*2 -2;
         int p2 = 0;
@@ -12,19 +11,19 @@ class Solution {
         for(int i=0;i<numRows;i++){
             if(i==0){
                 for(int j=i;j<n;j+=p1){
-                    rs+=ch[j];
+                    sb.append(ch[j]);
                 }
             }
             else if(i==numRows-1){
                 for(int j=i;j<n;j+=p2){
-                    rs+=ch[j];
+                    sb.append(ch[j]);
                 }
             }
             else{
                 int y=0;
                 int j=i;
                 while(j<n){
-                    rs+=ch[j];
+                    sb.append(ch[j]);
                     if((y&1)==0){
                         j+=p1;
                     }
@@ -39,6 +38,6 @@ class Solution {
             p2+=2;
         }
         
-        return rs;
+        return sb.toString();
     }
 }
