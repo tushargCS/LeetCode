@@ -1,41 +1,44 @@
 class Solution {
-    public String convert(String s, int n) {
+    public String convert(String s, int numRows) {
         
-        if(s.length()<=n){return s;}
-         if(n==1){return s;}
+        if(s.length()<=numRows){return s;}
+        if(numRows==1){return s;}
         
-     String r="";
-        for(int i=0;i<n;i++){
+        String rs = "";
+        char ch[] = s.toCharArray();
+        int p1 = numRows*2 -2;
+        int p2 = 0;
+        int n = s.length();
+        for(int i=0;i<numRows;i++){
             if(i==0){
-                int t=i;
-                while(t<s.length()){
-                   r+=s.charAt(t);
-                   t=t+((n-1)*2); 
-                    
+                for(int j=i;j<n;j+=p1){
+                    rs+=ch[j];
                 }
             }
-            else if(i==(n-1)){
-                int t=i;
-                while(t<s.length()){
-                   r+=s.charAt(t);
-                   t=t+((n-1)*2); 
+            else if(i==numRows-1){
+                for(int j=i;j<n;j+=p2){
+                    rs+=ch[j];
                 }
             }
             else{
-                int x=0;
-                int t=i;
-                while(t<s.length() || x<s.length()){
-                   if(x!=0 && x<s.length()){r+=s.charAt(x);} 
-                    if(t<s.length())r+=s.charAt(t);
-                    System.out.println(t+"  "+x);
-                   x=(t+((n-1)*2)-(2*i));
-                   t=t+((n-1)*2);
+                int y=0;
+                int j=i;
+                while(j<n){
+                    rs+=ch[j];
+                    if((y&1)==0){
+                        j+=p1;
+                    }
+                    else{
+                        j+=p2;
+                    }
+                    y++;
                 }
             }
+            
+            p1-=2;
+            p2+=2;
         }
         
-        
-        return r;
-        
+        return rs;
     }
 }
