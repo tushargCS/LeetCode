@@ -14,26 +14,25 @@
  * }
  */
 class Solution {
-    ArrayList<Integer>obj = new ArrayList<>();
+    TreeNode parent=null;
+    int ans = Integer.MAX_VALUE;
     public int minDiffInBST(TreeNode root) {
-        bst(root);
-        System.out.println(obj);
-        Collections.sort(obj);
         
-        int s = obj.size();
-        int min = Integer.MAX_VALUE;
-        for(int i=0;i<s-1;i++){
-            if(min>(obj.get(i+1)-obj.get(i))){
-                min = (obj.get(i+1)-obj.get(i));
-            }
-        }
-        return min;
+       return bst(root);
+        
     }
     
-    public void bst(TreeNode root){
-        if(root==null){return;}
-        obj.add(root.val);
-        bst(root.left);
-        bst(root.right);
+    public int bst(TreeNode root){
+        if(root.left!=null){
+            bst(root.left);
+        }
+        if(parent!=null){
+            ans = Math.min(ans,root.val-parent.val);
+        }
+        parent = root;
+        if(root.right!=null){
+            bst(root.right);
+        }
+        return ans;
     }
 }
