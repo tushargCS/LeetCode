@@ -5,7 +5,7 @@ class Solution {
         for(int t:arr){
             map.put(t,map.getOrDefault(t,0)+1);
         }
-        System.out.println(map);
+        // System.out.println(map);
         
         for(int t:arr){
             if( map.get(t) > l ){
