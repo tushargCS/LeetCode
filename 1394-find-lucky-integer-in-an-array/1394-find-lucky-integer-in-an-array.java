@@ -5,9 +5,11 @@ class Solution {
         for(int t:arr){
             map.put(t,map.getOrDefault(t,0)+1);
         }
-        
-        for(int i=arr.length-1;i>=0;i--){
-            if(arr[i]==map.get(arr[i])){return arr[i];}
+        int i = arr.length-1;
+        while(i>=0){
+            int a=map.get(arr[i]);
+            if(arr[i]==a){return arr[i];}
+            else{i=i-a;}
         }
         
         return -1;
